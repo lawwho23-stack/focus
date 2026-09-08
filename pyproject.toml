@@ -1,0 +1,6 @@
+# No `testpaths` on purpose. It silently skipped a test file that was saved
+# one folder up, and a green "9 passed" hid six tests that never ran, twice.
+# Without it pytest collects test_*.py from anywhere under focus/ (.venv is
+# skipped by default), so a file in the wrong place still runs.
+[tool.pytest.ini_options]
+pythonpath = ["."]

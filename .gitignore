@@ -4,3 +4,4 @@ __pycache__/
 focus.db
 .DS_Store
 .ruff_cache/
+.pytest_cache/
