@@ -130,6 +130,30 @@ async function loadToday() {
         slots.append(li);
     }
 }
+function promoteForm(idea) {
+    const wrap = document.createElement("div");
+    wrap.className = "promote-form";
+
+    const doneWhen = document.createElement("input");
+    doneWhen.placeholder = "done when? (the finish line)";
+    doneWhen.autocomplete = "off";
+
+    const lanes = document.createElement("div");
+    lanes.className = "lanes";
+    for (const lane of ["learning", "income", "client"]) {
+        lanes.append(
+            button(lane, () =>
+            act(() =>
+            post(`/api/ideas/${idea.id}/promote`, {
+                done_when: doneWhen.value.trim(), lane,
+            }),
+        ),
+    ),
+);
+    }
+    wrap.append(doneWhen, lanes, button("cancel", () => wrap.remove()));
+    return wrap;
+}
 
 async function loadIdeas() {
     const ideas = await api("/api/ideas");
@@ -137,13 +161,31 @@ async function loadIdeas() {
     list.innerHTML = "";
     for (const idea of ideas) {
         const li = document.createElement("li");
-        li.textContent = idea.text;
+
+        const row = document.createElement("div");
+        row.className = "row";
+
+        const body = document.createElement("span");
+        body.className = "body";
+        body.textContent = idea.text;
 
         const tag = document.createElement("span");
         tag.className = idea.ready ? "ready" : "frozen";
-        tag.textContent = idea.ready ? "ready" : "frozen";
+        tag.textContent = idea.ready
+            ? "ready"
+            : "frozen until " + idea.unfreeze_at.slice(0,10);
+        
+        row.append(body, tag);
+        if (idea.ready) {
+            row.append(
+                button("promote", () => {
+                    if (li.querySelector(".promote-form")) return;
+                    li.append(promoteForm(idea));
+                }),
+            );
+        }
 
-        li.append(tag);
+        li.append(row);
         list.append(li);
     }
 }

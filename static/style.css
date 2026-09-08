@@ -128,3 +128,46 @@ h1 {
   font-weight: 600;
   color: #0a7;
 }
+#list li {
+  display: block;
+  padding: 12px 0;
+}
+#list   .row {
+  display: flex;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+#list .row buttons {
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: 14px;
+}
+.promote-form {
+  margin-top: 10px;
+  padding: 12px;
+  background: #f6f6f6;
+  border-radius: 8px;
+}
+.promote-form input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+.lanes {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.lanes buttons {
+  flex: 1;
+  min-height: 44px;
+  padding: 0;
+  font-size: 14px;
+}
+.promote-form > button {
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: 14px;
+}
