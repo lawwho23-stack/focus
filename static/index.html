@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Focus</title>
+        <link rel="stylesheet" href="/style.css" />
+    </head>
+    <body>
+        <p id="error" hidden></p>
+
+        <h1>Today <span id="date"></span></h1>
+        <div id="primary"></div>
+
+        <h2>Commitments</h2>
+        <ul id="slots"></ul>
+
+        <h2>Vault</h2>
+
+        <form id="capture">
+            <input id="text" placeholder="what's the idea?" autocomplete="off" />
+            <button type="submit">capture</button>
+        </form>
+
+        <ul id="list"></ul>
+
+        <script src="/app.js"></script>
+    </body>
+    </html>

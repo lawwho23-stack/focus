@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+focus.db
+.DS_Store
+.ruff_cache/
